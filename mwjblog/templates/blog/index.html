@@ -1,0 +1,208 @@
+{% load staticfiles %}
+<!doctype html>
+<html>
+<head>
+<meta charset="gb2312">
+<title>我的博客</title>
+<meta name="keywords" content="风大胖胖,TT,傻然,受,伴郎,幽暗沼泽,咕咕" />
+<meta name="description" content="这是我的博客" />
+<link href="{% static 'blog/css/styles.css' %}" rel="stylesheet">
+<link href="{% static 'blog/css/animation.css' %}" rel="stylesheet">
+<!-- ���ض������� begin -->
+<link href="{% static 'blog/css/lrtk.css' %}" rel="stylesheet" />
+<script type="text/javascript" src="{% static 'blog/js/jquery.js' %}"></script>
+<script type="text/javascript" src="{% static 'blog/js/js.js' %}"></script>
+<!-- ���ض������� end-->
+<!--[if lt IE 9]>
+<script src="js/modernizr.js"></script>
+<![endif]-->
+</head>
+<body >
+<!--<div style="position:absolute; width:100%; height:100%; z-index:-1; left:0; top:0;">      
+<img src="{% static 'blog/images/back1.jpg' %}" height="100%" width="100%" style="left:0; top:0;">      
+</div>  -->
+<header>
+  <nav id="nav">
+    <ul>
+      <li><a href="/" >网站首页</a></li>
+      <li><a href="/download/" target="_blank" title="个人博客模板">风大胖胖</a></li>
+      <li><a href="/book/" target="_blank" title="图书推荐">TT</a></li>
+      <li><a href="/web/" target="_blank" title="网站建设">傻然</a></li>
+      <li><a href="/newshtml5/" target="_blank" title="HTML5 / CSS3">受</a></li>
+      <li><a href="/jstt/" target="_blank" title="技术探讨">伴郎</a></li>
+      <li><a href="/news/s/" target="_blank" title="慢生活">幽暗沼泽</a></li>
+      <li><a href="/newstalk/" target="_blank" title="碎言碎语">咕咕</a></li>
+      <li><a href="/news/jsex/" target="_blank" title="JS 实例代码演示">哈哈</a></li>
+    </ul>
+    <script src="{% static 'blog/js/silder.js' %}"></script><!--��ȡ��ǰҳ���� ������ʾ����--> 
+  </nav>
+</header>
+<!--header end-->
+<div id="mainbody">
+  <div class="info">
+    <figure> <img src="{% static 'blog/images/q1.jpg' %}" width="100% alt="Panama Hat">
+      <figcaption><strong>我爱风大胖胖</strong>   我最喜欢风大胖胖了！</figcaption>
+    </figure>
+    <div class="card" style="background-image:url({% static 'blog/images/back1.jpg' %});background-position:center; background-repeat:repeat-y">
+      <h1>我的名片</h1>
+      <font color="black">
+      <B><p>网名：{{ userinfo.nickname }}</p>
+      <p>ְ职业：{{ userinfo.work }}</p>
+      <p>公司：{{ userinfo.company }}</p>
+      <p>Email：{{ userinfo.email }}</p></B></font>
+      <ul class="linkmore">
+        <li><a href="/" class="talk" title="给我留言"></a></li>
+        <li><a href="/" class="address" title="联系地址"></a></li>
+        <li><a href="/" class="email" title="给我写信"></a></li>
+        <li><a href="/" class="photos" title="生活照片"></a></li>
+        <li><a href="/" class="heart" title="关注我"></a></li>
+      </ul>
+    </div>
+  </div>
+  <!--info end-->
+  <div class="blank"></div>
+  <div class="blogs">
+    <ul class="bloglist">
+      {% for post in post_list %}
+      <li>
+        <div class="arrow_box">
+          <div class="ti"></div>
+          <!--������-->
+          <div class="ci"></div>
+          <!--Բ��-->
+          <h2 class="title"><a href="/" target="_blank">{{ post.title }}</a></h2>
+          <ul class="textinfo">
+            <a href="/"><img src="{% static 'blog/images/s1.jpg' %}"></a>
+            <p>{{ post.excerpt }}</p>
+          </ul>
+          <ul class="details">
+            <li class="likes"><a href="#">10</a></li>
+            <li class="comments"><a href="#">34</a></li>
+            <li class="author"><a href="#">{{ post.author }}</a></li>
+            <li class="icon-time"><a href="#">{{ post.category.name }}</a></li>
+          </ul>
+        </div>
+        <!--arrow_box end--> 
+      </li>
+      {% empty %}
+        <div class="no-post">暂时还没有发布的文章！</div>
+      {% endfor %}
+    </ul>
+    <!--bloglist end-->
+    <aside>
+      <div class="tuijian">
+        <h2>推荐文章</h2>
+        <ol>
+          <li><span><strong>1</strong></span><a href="/">TT喜欢受</a></li>
+          <li><span><strong>2</strong></span><a href="/">伴郎也喜欢受</a></li>
+          <li><span><strong>3</strong></span><a href="/">受喜欢大的弟弟</a></li>
+  
+        </ol>
+      </div>
+      <div class="toppic">
+        <h2>图文并茂</h2>
+        <ul>
+          <li><a href="/"><img src="{% static 'blog/images/k01.jpg' %}">哈哈
+            <p>伤不起</p>
+            </a></li>
+          <li><a href="/"><img src="{% static 'blog/images/k02.jpg' %}">哈哈
+            <p>感兴趣</p>
+            </a></li>
+          <li><a href="/"><img src="{% static 'blog/images/k03.jpg' %}">哈哈
+            <p>喜欢</p>
+            </a></li>
+        </ul>
+      </div>
+      <div class="clicks">
+        <h2>热门点击</h2>
+        <ol>
+          <li><span><a href="/">我</a></span><a href="/">我</a></li>
+          <li><span><a href="/">爱</a></span><a href="/">爱</a></li>
+          <li><span><a href="/">胖</a></span><a href="/">胖</a></li>
+          <li><span><a href="/">胖</a></span><a href="/">胖</a></li>
+        </ol>
+      </div>
+      <div class="search">
+        <form class="searchform" method="get" action="#">
+          <input type="text" name="s" value="Search" onfocus="this.value=''" onblur="this.value='Search'">
+        </form>
+      </div>
+      <div class="viny">
+        <dl>
+          <dt class="art"><img src="{% static 'blog/images/artwork.png' %}" alt="专辑"></dt>
+          <dd class="icon-song"><span></span>南方姑娘</dd>
+          <dd class="icon-artist"><span></span>歌手：赵雷</dd>
+          <dd class="icon-album"><span></span>所属专辑：《赵小雷》</dd>
+          <dd class="icon-like"><span></span><a href="/">喜欢</a></dd>
+          <dd class="music">
+            <audio src="{% static 'blog/images/nf.mp3' %}" controls></audio>
+          </dd>
+          <!--Ҳ�������loop���� ��Ƶ���ص�ĩβʱ�������²���-->
+        </dl>
+      </div>
+    </aside>
+  </div>
+  <!--blogs end--> 
+</div>
+<!--mainbody end-->
+<footer>
+  <div class="footer-mid">
+    <div class="links">
+      <h2>友情链接</h2>
+      <ul>
+        <li><a href="/">CSDN</a></li>
+        <li><a href="http://www.baidu.com">百度一下</a></li>
+      </ul>
+    </div>
+    <div class="visitors">
+      <h2>最新评论</h2>
+      <dl>
+        <dt><img src="{% static 'blog/images/s8.jpg' %}">
+        <dt>
+        <dd>DanceSmile
+          <time>49分钟前</time>
+        </dd>
+        <dd>�� <a href="http://www.yangqq.com/jstt/bj/2013-07-28/530.html" class="title">如果要学习web前端开发，需要学习什么？ </a>中评论：</dd>
+        <dd>文章非常详细，我很喜欢.前端的工程师很少，我记得几年前yahoo花高薪招聘前端也招不到</dd>
+      </dl>
+      <dl>
+        <dt><img src="{% static 'blog/images/s7.jpg' %}">
+        <dt>
+        <dd>yisa
+          <time>2小时前</time>
+        </dd>
+        <dd>在 <a href="http://www.yangqq.com/news/s/2013-07-31/533.html" class="title">芭蕾女孩的心事儿</a>中评论：</dd>
+        <dd>我手机里面也有这样一个号码存在</dd>
+      </dl>
+      <dl>
+        <dt><img src="{% static 'blog/images/s6.jpg' %}">
+        <dt>
+        <dd>小林博客
+          <time>8月7日</time>
+        </dd>
+        <dd>在 <a href="http://www.yangqq.com/jstt/bj/2013-06-18/285.html" class="title">如果个人博客网站再没有价值，你还会坚持吗？ </a>中评论：</dd>
+        <dd>博客色彩丰富，很是好看</dd>
+      </dl>
+    </div>
+    <section class="flickr">
+      <h2>摄影作品</h2>
+      <ul>
+        <li><a href="/"><img src="{% static 'blog/images/e1.jpg' %}"></a></li>
+        <li><a href="/"><img src="{% static 'blog/images/02.jpg' %}"></a></li>
+        <li><a href="/"><img src="{% static 'blog/images/03.jpg' %}"></a></li>
+        <li><a href="/"><img src="{% static 'blog/images/04.jpg' %}"></a></li>
+        <li><a href="/"><img src="{% static 'blog/images/05.jpg' %}"></a></li>
+        <li><a href="/"><img src="{% static 'blog/images/06.jpg' %}"></a></li>
+        <li><a href="/"><img src="{% static 'blog/images/07.jpg' %}"></a></li>
+        <li><a href="/"><img src="{% static 'blog/images/08.jpg' %}"></a></li>
+        <li><a href="/"><img src="{% static 'blog/images/09.jpg' %}"></a></li>
+      </ul>
+    </section>
+  </div>
+  <div class="footer-bottom">
+    <p>Copyright 2017 Design by <a href="/">风大胖胖</a></p>
+  </div>
+</footer>
+<div id="tbox"> <a id="togbook" href="/e/tool/gbook/?bid=1"></a> <a id="gotop" href="javascript:void(0)"></a> </div>
+</body>
+</html>
